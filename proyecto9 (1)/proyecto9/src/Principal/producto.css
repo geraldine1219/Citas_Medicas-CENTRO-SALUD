@@ -1,0 +1,106 @@
+.producto-container {
+  padding: 20px;
+}
+
+.producto-titulo {
+  font-size: 2rem;
+}
+
+.producto-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.producto-col {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.producto-card-container {
+  width: 100%;
+  max-width: 300px;
+}
+
+.producto-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.producto-card-title {
+  font-size: 1.2rem;
+}
+
+.producto-form-group {
+  margin-bottom: 15px;
+}
+
+.producto-button {
+  background-color:cadetblue;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.producto-button:hover {
+  background-color:blueviolet;
+}
+
+.producto-button-remove {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.producto-button-warning {
+  background-color: #ffc107;
+}
+
+.producto-button-success {
+  background-color: #28a745;
+}
+
+.producto-col-carrito {
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.producto-lista-titulo {
+  font-size: 1.5rem;
+}
+
+.producto-list-group {
+  margin-bottom: 20px;
+}
+
+.producto-total {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.producto-card-img {
+  width: 100%; /* O el tamaño que prefieras, como 200px */
+  height: auto; /* Mantiene la proporción de la imagen */
+  object-fit: cover; /* Hace que la imagen cubra todo el espacio disponible sin distorsionarse */
+}
+
+/* Opcional: Para darle un tamaño específico a las imágenes dentro de los cards */
+.producto-card {
+  width: 200px; /* Ajusta el ancho de los productos según el diseño */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.producto-card-img {
+  max-width: 100%;  /* No exceder el tamaño del card */
+  max-height: 200px; /* Ajustar la altura de las imágenes */
+  margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
