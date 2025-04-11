@@ -246,3 +246,18 @@
 3. El sistema muestra la lista de citas médicas encontradas según el médico o paciente ingresado.
 
 **Postcondiciones:** Se visualizan las citas médicas encontradas.
+
+REQUERIMIENTOS NO FUNCIONAL
+
+
+RNF 01 SEGURIDAD
+
+DESCRIPCIÓN El sistema tiene un proceso de identificación de usuario para poder hacer uso del mismo. El
+usuario y adimistrador debe identificarse mediante un login de acceso (usuario y contraseña).
+Esto se debe porque para poder realizar una solicitud o agendar una cita debe estar
+como usuario o admistrador activo. El administrador es el responsable de dar solución o respuesta a
+dicha solicitud o cita realizada por el usuario. Por lo tanto, se debe tener integridad de la
+información que registra el sistema.
+
+RNF 02 FIABILIDAD
+DESCRIPCIÓN Cuando un usuario realiza una solicitud o agenda una cita, los datos ingresados se almacenan automáticamente en la base de datos del sistema para su posterior gestión y consulta. Además, al momento de enviar la solicitud, se genera una notificación automática que se envía al correo electrónico del usuario como confirmación del trámite. De igual manera, el administrador del sistema tendrá acceso a toda la información registrada, ya que es su responsabilidad revisar, gestionar y dar respuesta oportuna a cada solicitud o cita realizada. Este flujo garantiza que tanto el usuario como el administrador estén informados, asegurando una comunicación efectiva y un adecuado seguimiento del proceso.
