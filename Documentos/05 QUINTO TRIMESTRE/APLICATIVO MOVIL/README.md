@@ -15,6 +15,8 @@ En primer lugar, se debe instalar el CLI del framework mencionado de manera glob
 
 Luego, la instalación de todas las dependencias necesarias para el funcionamiento de la app se realiza mediante el comando `npm install`, siguiendo el contenido del archivo `package.json`.
 
+Descargar la carpeta node_modules
+
 El último paso para poder ejecutar el proyecto en modo desarrollo es correr `npm start`, aunque también se puede descargar y abrir directamente en un celular con sistema operativo Android conectado vía USB directamente con el comando `npm run android`.
 
 ## Funcionalidades
