@@ -76,3 +76,80 @@ INSERT INTO pacientes (usuario_id, identificacion, nombre, apellido, fecha_nacim
 -- Insertar cita de prueba
 INSERT INTO citas (paciente_id, medico_id, fecha, hora, motivo, estado) VALUES
 (1, 1, '2023-12-15', '09:00:00', 'Consulta por dolor en el pecho', 'pendiente');
+
+/*Consultas con INNER JOIN */
+-- Listar todas las citas con datos del paciente y del médico
+SELECT 
+  c.id AS id_cita,
+  c.fecha,
+  c.hora,
+  c.motivo,
+  c.estado,
+  CONCAT(p.nombre, ' ', p.apellido) AS nombre_paciente,
+  CONCAT(m.nombre, ' ', m.apellido) AS nombre_medico,
+  m.especialidad
+FROM citas c
+INNER JOIN pacientes p ON c.paciente_id = p.id
+INNER JOIN medicos m ON c.medico_id = m.id;
+
+-- Mostrar todas las citas de un paciente específico por su identificación
+SELECT 
+  c.id,
+  c.fecha,
+  c.hora,
+  c.motivo,
+  c.estado,
+  CONCAT(m.nombre, ' ', m.apellido) AS medico,
+  m.especialidad
+FROM citas c
+INNER JOIN pacientes p ON c.paciente_id = p.id
+INNER JOIN medicos m ON c.medico_id = m.id
+WHERE p.identificacion = '987654321';
+
+-- Obtener todas las citas de un médico específico por su correo
+SELECT 
+  c.id,
+  c.fecha,
+  c.hora,
+  c.motivo,
+  c.estado,
+  CONCAT(p.nombre, ' ', p.apellido) AS paciente
+FROM citas c
+INNER JOIN pacientes p ON c.paciente_id = p.id
+INNER JOIN medicos m ON c.medico_id = m.id
+INNER JOIN usuarios u ON m.usuario_id = u.id
+WHERE u.email = 'medico1@novaeps.com';
+
+/*Consultas Anidadas (Subqueries)*/
+-- Mostrar todas las citas del paciente con mayor cantidad de citas
+SELECT * FROM citas
+WHERE paciente_id = (
+  SELECT paciente_id
+  FROM citas
+  GROUP BY paciente_id
+  ORDER BY COUNT(*) DESC
+  LIMIT 1
+);
+
+-- Listar médicos que tienen citas agendadas en una fecha específica
+SELECT nombre, apellido, especialidad FROM medicos
+WHERE id IN (
+  SELECT medico_id FROM citas WHERE fecha = '2023-12-15'
+);
+
+-- Mostrar los pacientes que tienen citas programadas hoy
+SELECT nombre, apellido FROM pacientes
+WHERE id IN (
+  SELECT paciente_id FROM citas
+  WHERE fecha = CURDATE()
+);
+
+-- Mostrar la próxima cita del paciente "Ana Pérez"
+SELECT * FROM citas
+WHERE paciente_id = (
+  SELECT id FROM pacientes
+  WHERE nombre = 'Ana' AND apellido = 'Pérez'
+)
+AND fecha >= CURDATE()
+ORDER BY fecha, hora
+LIMIT 1;
